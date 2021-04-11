@@ -9,8 +9,12 @@
  * For n = 152, the output should be 52
  *
  */
-function deleteDigit(/* n */) {
-  throw new Error('Not implemented');
+function deleteDigit(n) {
+  let arrayOfPossibleNumbers = Array(String(n).length).fill(String(n));
+
+  arrayOfPossibleNumbers = arrayOfPossibleNumbers.map((el, i) => el.slice(0, i) + el.slice(i + 1));
+
+  return Math.max(...arrayOfPossibleNumbers);
 }
 
 module.exports = deleteDigit;
