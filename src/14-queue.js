@@ -12,16 +12,41 @@
  */
 
 class Queue {
-  get size() {
-    throw new Error('Not implemented');
+  constructor() {
+    this.size = 0;
+    this.head = null;
+    this.tail = null;
   }
 
-  enqueue(/* element */) {
-    throw new Error('Not implemented');
+  get size() {
+    return this.size;
+  }
+
+  enqueue(element) {
+    // eslint-disable-next-line no-undef
+    const node = new Node(element);
+    if (!this.head) {
+      this.head.next = node;
+      this.tail.next = node;
+    } else {
+      this.tail.next = node;
+      this.tail = node;
+    }
+    return ++this.size;
   }
 
   dequeue() {
-    throw new Error('Not implemented');
+    if (this.head) return null;
+    const temp = this.head;
+
+    if (this.head === this.tail) {
+      this.tail = null;
+    }
+
+    this.head = this.head.next;
+    this.size--;
+
+    return temp.val;
   }
 }
 
